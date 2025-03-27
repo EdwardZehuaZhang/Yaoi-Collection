@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mangas",
+  "info": {
+    "singularName": "manga",
+    "pluralName": "mangas",
+    "displayName": "manga"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "Tags": {
+      "type": "string"
+    },
+    "Artist": {
+      "type": "string"
+    },
+    "Group": {
+      "type": "string"
+    },
+    "Language": {
+      "type": "enumeration",
+      "enum": [
+        "English",
+        "Japanese",
+        "Chinese"
+      ]
+    },
+    "Categories": {
+      "type": "string"
+    },
+    "Pages": {
+      "type": "integer"
+    },
+    "Uploaded_Time": {
+      "type": "datetime"
+    }
+  }
+}
