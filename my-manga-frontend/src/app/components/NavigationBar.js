@@ -5,8 +5,8 @@ export default function NavigationBar() {
   return (
     <nav className="bg-gray-800 text-white p-4">
       <div className="container mx-auto flex justify-between">
-        <Link href="/">
-          <a className="text-xl font-bold">My Manga</a>
+        <Link href="/" className="text-xl font-bold">
+          My Manga
         </Link>
         <div className="space-x-4">
           <Link href="/tags">Tags</Link>

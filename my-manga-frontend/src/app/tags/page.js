@@ -9,8 +9,11 @@ export default function TagsPage() {
       <h1 className="text-3xl font-bold mb-4">Tags</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {tags.map((tag, index) => (
-          <Link key={index} href={`/?tag=${encodeURIComponent(tag)}`}>
-            <a className="border p-4 rounded text-center hover:bg-gray-100">{tag}</a>
+          <Link
+            key={index}
+            href={`/?tag=${encodeURIComponent(tag)}`}
+            className="border p-4 rounded text-center hover:bg-gray-100">
+            {tag}
           </Link>
         ))}
       </div>
