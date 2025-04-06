@@ -35,7 +35,7 @@ export default function Home() {
               <div className="flex items-center gap-[6.73px] pl-1 pr-3 py-0">
                 <Input 
                   className="font-title-400 !text-content-reversed bg-transparent border-0 focus:outline-none focus:ring-0 placeholder:text-content-alpha-80 w-full text-[20px] leading-[24px] tracking-[-0.2px]"
-                  placeholder="Search by title, tags, characters, or describe a scene you're thinking of."
+                  placeholder="Search by title, tags, characters, or describe a scene you're thinking of"
                   style={{ color: 'white' }}
                 />
               </div>
@@ -63,7 +63,7 @@ export default function Home() {
                       alt="Research"
                       className="w-[30px] h-[30px] object-contain"
                     />
-                    <span className="font-title-400 text-content-reversed text-[20px] leading-[24px] tracking-[-0.2px] ml-1">Research</span>
+                    <span className="font-title-400 text-content-reversed text-[20px] leading-[24px] tracking-[-0.2px] ml-2">Research</span>
                   </Button>
 
                   {/* Deep Think button */}
@@ -75,7 +75,7 @@ export default function Home() {
                       alt="Deep Think"
                       className="w-[30px] h-[30px] object-contain"
                     />
-                    <span className="font-title-400 text-content-reversed text-[20px] leading-[24px] tracking-[-0.2px] ml-1">Deep Think</span>
+                    <span className="font-title-400 text-content-reversed text-[20px] leading-[24px] tracking-[-0.2px] ml-2">Deep Think</span>
                   </Button>
                 </div>
 
@@ -91,6 +91,22 @@ export default function Home() {
             </div>
           </CardContent>
         </Card>
+      </section>
+
+      {/* Categories section */}
+      <section className="max-w-[1208px] mx-auto mb-10 mt-5">
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          {["Vanilla", "Harem", "Mind Control", "Tentacles", "Teacher", "Elf", "Cosplay", "Group", "Schoolgirl"].map((category) => (
+            <div
+              key={category}
+              className="h-[30px] px-4 py-1.5 rounded-full border border-solid border-button-tetriary-reversed-normal cursor-pointer hover:bg-button-tetriary-reversed-hover transition-colors flex items-center"
+            >
+              <span className="font-title-400 text-content-reversed text-[15.2px] tracking-[-0.15px] leading-[18.2px]">
+                {category}
+              </span>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="mb-10">

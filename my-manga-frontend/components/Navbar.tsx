@@ -25,7 +25,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <img
-              className="w-[47.45px] h-[54.81px]"
+              className="w-[22.72px] h-[26.25px]"
               alt="Collection Logo"
               src="/logo.svg"
             />
