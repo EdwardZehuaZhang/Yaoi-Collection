@@ -1,14 +1,18 @@
-// src/app/layout.js
-import './globals.css';
-import NavigationBar from './components/NavigationBar';
+// app/layout.tsx
+import { ReactNode } from 'react';
+import Navbar from '@/components/Navbar'
+import './globals.css'
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children
+}: {
+  children: ReactNode
+}) {
   return (
     <html lang="en">
       <body>
-        <NavigationBar />
+        <Navbar />
         {children}
-        {/* Optionally add <Footer /> here */}
       </body>
     </html>
   );
