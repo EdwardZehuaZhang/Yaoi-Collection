@@ -14,31 +14,51 @@
       "type": "string",
       "required": true
     },
-    "Tags": {
-      "type": "string"
+    "slug": {
+      "type": "string",
+      "unique": true
     },
-    "Artist": {
-      "type": "string"
-    },
-    "Group": {
-      "type": "string"
-    },
-    "Language": {
-      "type": "enumeration",
-      "enum": [
-        "English",
-        "Japanese",
-        "Chinese"
-      ]
-    },
-    "Categories": {
-      "type": "string"
-    },
-    "Pages": {
+    "favorite_count": {
       "type": "integer"
     },
-    "Uploaded_Time": {
+    "upload_date": {
       "type": "datetime"
+    },
+    "tags": {
+      "type": "text"
+    },
+    "artist": {
+      "type": "text"
+    },
+    "group": {
+      "type": "text"
+    },
+    "parody": {
+      "type": "text"
+    },
+    "characters": {
+      "type": "text"
+    },
+    "language": {
+      "type": "text"
+    },
+    "categories": {
+      "type": "text"
+    },
+    "pages": {
+      "type": "integer"
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "cover_image": {
+      "type": "string"
+    },
+    "is_yaoi": {
+      "type": "boolean"
+    },
+    "folder_path": {
+      "type": "string"
     }
   }
 }

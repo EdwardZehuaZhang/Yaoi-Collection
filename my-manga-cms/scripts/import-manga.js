@@ -3,7 +3,8 @@ const path = require('path');
 const axios = require('axios');
 
 // Configuration
-const API_URL = 'http://localhost:8765/api'; // Updated port to match the new Strapi port
+const API_URL = 'http://localhost:1400/api';
+const API_TOKEN = '59bc1ac8deef938bf08d4d6f6951889a7810d0d562852320cb6090bf845a935126bd919373d17a876d6f025e6445d14486d80fce263160fccd51a75f4e30ab02a0c813249babcf3035117d9bff099bd4c7ed6028c0e6836fa068c40840603820ff7c6943842937d513d1c8a4933e35ad17a34202a76de9ee6b68265fb0212bab';
 const MANGA_DATA_FOLDER = path.resolve(__dirname, '../../my-manga-crawl/yaoi_manga_data');
 const UPLOAD_FOLDER = path.resolve(__dirname, '../public/uploads/manga');
 
@@ -11,6 +12,11 @@ const UPLOAD_FOLDER = path.resolve(__dirname, '../public/uploads/manga');
 if (!fs.existsSync(UPLOAD_FOLDER)) {
   fs.mkdirSync(UPLOAD_FOLDER, { recursive: true });
 }
+
+// Add authentication headers to all requests
+axios.defaults.headers.common['Authorization'] = `Bearer ${API_TOKEN}`;
+
+// async function checkAndCreateContentType() { /* removed for Strapi v4 */ }
 
 /**
  * Get all manga directories from the data folder
@@ -119,17 +125,27 @@ async function importManga(mangaDir, metadata) {
       }
     };
 
+    console.log('Attempting to import manga with data:', JSON.stringify(strapiData, null, 2));
+
     // Create manga entry in Strapi
-    const response = await axios.post(`${API_URL}/mangas`, strapiData, {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
+    const response = await axios.post(`${API_URL}/mangas`, strapiData);
 
     console.log(`Successfully imported: ${metadata.title}`);
     return response.data;
   } catch (error) {
-    console.error(`Error importing ${mangaDir}:`, error.message);
+    console.error(`Error importing ${mangaDir}:`);
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      console.error('Response data:', JSON.stringify(error.response.data, null, 2));
+      console.error('Response status:', error.response.status);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error('Connection error - no response received');
+      console.error('Request details:', error.request._currentUrl);
+    } else {
+      // Something happened in setting up the request
+      console.error('Error details:', error.message);
+    }
     return null;
   }
 }
@@ -140,6 +156,8 @@ async function importManga(mangaDir, metadata) {
 async function importAllManga() {
   try {
     console.log('Starting manga import process...');
+    
+    // await checkAndCreateContentType(); // skip content-type check on Strapi v4
     
     // Get all manga directories
     const mangaDirs = await getMangaDirectories();

@@ -380,24 +380,32 @@ export interface ApiMangaManga extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Artist: Schema.Attribute.String;
-    Categories: Schema.Attribute.String;
+    artist: Schema.Attribute.Text;
+    categories: Schema.Attribute.Text;
+    characters: Schema.Attribute.Text;
+    cover_image: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Group: Schema.Attribute.String;
-    Language: Schema.Attribute.Enumeration<['English', 'Japanese', 'Chinese']>;
+    favorite_count: Schema.Attribute.Integer;
+    folder_path: Schema.Attribute.String;
+    group: Schema.Attribute.Text;
+    is_yaoi: Schema.Attribute.Boolean;
+    language: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::manga.manga'> &
       Schema.Attribute.Private;
-    Pages: Schema.Attribute.Integer;
+    pages: Schema.Attribute.Integer;
+    parody: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
-    Tags: Schema.Attribute.String;
+    slug: Schema.Attribute.String & Schema.Attribute.Unique;
+    source_url: Schema.Attribute.String;
+    tags: Schema.Attribute.Text;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Uploaded_Time: Schema.Attribute.DateTime;
+    upload_date: Schema.Attribute.DateTime;
   };
 }
 

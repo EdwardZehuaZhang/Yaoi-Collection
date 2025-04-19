@@ -1,6 +1,7 @@
 // src/app/page.js
 import Link from 'next/link';
 import TestComponent from './components/TestComponent';
+import PopularNow from './components/PopularNow';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from "@/components/ui/input";
@@ -125,29 +126,8 @@ export default function Home() {
             </div>
           </header>
 
-          <div className="flex items-center justify-between w-full">
-            {[1, 2, 3, 4, 5, 6].map((card) => (
-              <div
-                key={card}
-                className="w-[196.62px] bg-content-alpha-20 rounded border-[0.84px] border-solid border-contentreversed p-0"
-              >
-                <div className="flex flex-col items-center gap-[4.07px] p-0">
-                  <div className="w-full h-[284.96px] bg-[#c6c6c6] rounded-[4.22px]" />
-
-                  <div className="flex items-start w-full px-0.5 py-0">
-                    <img
-                      src="/united-kingdom.svg"
-                      alt="English"
-                      className="h-[13.72px] w-auto flex-shrink-0 mt-0"
-                    />
-                    <div className="font-label-300 !text-content-reversed text-[12.7px] text-center tracking-[0] leading-[16.9px] flex-1 pl-1">
-                      People I know Turned into a NIKKE!3
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Dynamic popular manga list */}
+          <PopularNow limit={6} />
         </div>
       </section>
 

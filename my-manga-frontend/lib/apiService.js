@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:1337/api';
+const API_URL = 'http://localhost:1400/api';
 
 /**
  * Get popular manga (those with the yaoi tag)
@@ -9,12 +9,11 @@ const API_URL = 'http://localhost:1337/api';
  */
 export async function getPopularManga(limit = 6) {
   try {
-    // In a real implementation, we would use the Strapi filters to get manga with yaoi tag
-    // and sort by popularity (favorite_counts), but for now we'll just get the latest
     const response = await axios.get(`${API_URL}/mangas`, {
       params: {
+        'filters[is_yaoi][$eq]': true,
         'pagination[limit]': limit,
-        'sort': 'createdAt:desc',
+        'sort': 'favorite_count:desc',
         'populate': '*'
       }
     });
