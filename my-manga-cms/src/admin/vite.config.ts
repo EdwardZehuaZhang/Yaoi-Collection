@@ -1,8 +1,6 @@
 import { defineConfig, mergeConfig, type UserConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
-// If you're using a base config extension
 export default defineConfig((configEnv) => {
   return mergeConfig({
     resolve: {
@@ -10,8 +8,5 @@ export default defineConfig((configEnv) => {
         '@': path.resolve(__dirname, './src'),
       },
     },
-    plugins: [
-      tailwindcss(),
-    ],
   }, configEnv);
 });
